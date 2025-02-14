@@ -1,5 +1,4 @@
-
-import Calculator from './Views/Calculator';
+import Calculator from "./Views/Calculator";
 
 function App() {
   return (
