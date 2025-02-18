@@ -1,34 +1,35 @@
 import React from "react";
 import { Card, Col, Row, Button } from "antd";
 
-export default function CalculatorButtons() {
+export default function CalculatorButtons({ onButtonClick }) {
   const buttonRows = [
     ["7", "8", "9", "x"],
     ["4", "5", "6", "-"],
     ["1", "2", "3", "+"],
-    ["C", "0", "=", "/"],
+    ["C", "0", "=", "÷"],
   ];
 
   const cardStyle = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    margin: "auto",
-    maxWidth: 400,
-    padding: "20px",
+    maxWidth: "100%",
+  }
+
+  const handleButtonClick = (label) => {
+    onButtonClick(label);
   };
 
-return (
-  <Card style={cardStyle}>
+  return (
+    <Card style={cardStyle}>
       {buttonRows.map((row, rowIndex) => (
-        <Row key={rowIndex} gutter={[16, 16]} justify="center">
+        <Row key={rowIndex} gutter={[12, 12]} justify="center">
           {row.map((label, colIndex) => (
-            <Col key={colIndex} span={6}>
+            <Col key={colIndex} span={6} style={{ padding: 8 }}>
               <Button
-                type="primary"
-                shape="circle"
                 size="large"
-                style={{ width: "60px", height: "60px" }}
+                style={{ width: '70px', height: "60px" }}
+                onClick={() => handleButtonClick(label)}
                 aria-label={`Button ${label}`}
               >
                 <h1 style={{ margin: 0 }}>{label}</h1>
